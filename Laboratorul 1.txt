@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div  ng-init="a=10;b=22">
+
+<p>Prima cifra: <input type="number" ng-model="a"></p>
+<p>A doua cifra: <input type="number" ng-model="b"></p>
+<hr/>
+<p>Suma: {{a}}+{{b}}={{a+b}}</p>
+<p>Diferenta: {{a}}-{{b}}=<span ng-bind="a - b"></span></p>
+<p>Produs: {{a}}*{{b}}={{a*b}}</p>
+<p>Cat: {{a}}/{{b}}=<span ng-bind="a / b"></span></p>
+<hr/>
+<p>{{a}}*1={{ a * 1 }}</p>
+<p>{{a}}*2={{ a * 2 }}</p>
+<p>{{a}}*3={{ a * 3 }}</p>
+<p>{{a}}*4={{ a * 4 }}</p>
+<p>{{a}}*5={{ a * 5 }}</p>
+<p>{{a}}*6={{ a * 6 }}</p>
+<p>{{a}}*7={{ a * 7 }}</p>
+<p>{{a}}*8={{ a * 8 }}</p>
+<p>{{a}}*9={{ a * 9 }}</p>
+<hr/>
+<p ng-repeat="x in records">{{a}}* {{x}}={{a * x}}</p>
+</div>
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+  $scope.records = [1,2,3,4,5,6,7,8,9]});</script>
+</body>
+</html>
