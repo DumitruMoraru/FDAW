@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+
+<p>Introduceti numele in campul de jos:</p>
+
+<p><input type="text" ng-model="ncaut"></p>
+<p>Lista integrala este:</p>
+
+<ul>
+  <li ng-repeat="x in names | filter:ncaut">
+    {{ x }}
+  </li>
+</ul>
+
+</div>
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        'Moraru Dumitru',
+        'Calancea Ion',
+        'Margareth Bates',
+        'Huge Nice'
+    ];
+});
+</script>
+
+</body>
+</html>
