@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<p><h2>Lista Studentilor <select ng-model="selecstud" ng-options="y.nume for (x, y) in students"></select></h2></p>
+
+
+
+<h3>Numele Prenumele: {{selecstud.nume}}</h3>
+<h3>Facultatea: {{selecstud.fac}}</h3>
+<h3>Specialitatea: {{selecstud.spec}}</h3>
+<h3>Anul: {{selecstud.an}}</h3>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.students = {
+        stud01 : {nume : "Herghelegiu Nicu", fac : "FMI", spec : "IA", an : "3"},
+        stud02 : {nume : "Vasile Furtuna", fac : "FCTC", spec : "MNA", an : "4"},
+        stud03 : {nume : "Irina Grigore", fac : "FBD", spec : "CRD", an : "2"},
+        stud04 : {nume : "Moraru Vadim", fac : "FFI", spec : "NNYT", an : "2"},
+        stud05 : {nume : "Cert Iulia", fac : "FJSC", spec : "LA", an : "1"},
+        stud06 : {nume : "Ana Li", fac : "FPSESAS", spec : "CHEC", an : "3"}
+    }
+});
+</script>
+
+</body>
+</html>
