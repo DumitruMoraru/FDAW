@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+
+<div ng-init="a=1;b=1">
+Activeaza introducerea: <input type="checkbox" ng-model="myVar">
+<div ng-show="myVar">
+a: <input type="number" ng-model="a"/> </br>
+b: <input type="number" ng-model="b"/>
+<div ng-if="b!=0"><p> Cat-ul = {{a / b}}<p/> </div>
+<div ng-if="b==0"><p> Operatie Interzisa!<p/> </div>
+</div>
+</div>
+
+<p>Introduceti numele in campul de jos:</p>
+
+<p><input type="text" ng-model="ncaut"></p>
+<p>Lista integrala este:</p>
+
+<ul>
+  <li ng-repeat="x in names | filter:ncaut">
+    {{ x.nume }} {{x.fac}} {{x.spec}} {{x.an}}
+  </li>
+</ul>
+<p> Limitam:
+<ul>
+  <li ng-repeat="x in names | limitTo : 1">
+    {{ x.nume }}
+  </li>
+</ul>
+
+</div>
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        {nume : "Herghelegiu Nicu", fac : "FMI", spec : "IA", an : "3"},
+        {nume : "Vasile Furtuna", fac : "FCTC", spec : "MNA", an : "4"},
+        {nume : "Irina Grigore", fac : "FBD", spec : "CRD", an : "2"},
+        {nume : "Moraru Vadim", fac : "FFI", spec : "NNYT", an : "2"},
+        {nume : "Cert Iulia", fac : "FJSC", spec : "LA", an : "1"},
+        {nume : "Ana Li", fac : "FPSESAS", spec : "CHEC", an : "3"}
+    ];
+});
+</script>
+
+</body>
+</html>
