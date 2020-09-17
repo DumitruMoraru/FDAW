@@ -1,0 +1,153 @@
+1.	De creat lista studenților (nume, prenume, nota). De organizat căutarea studentului X. X de dat prin input
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="namesCtrl">
+<p>Introduceti numele in campul de jos:</p>
+<p><input type="text" ng-model="ncaut"></p>
+<p>Lista integrala este:</p>
+<ul>
+  <li ng-repeat="x in names | filter:ncaut">
+    {{ x.nume }} {{x.pren}} {{x.not}}
+  </li>
+</ul>
+</div>
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        {nume : "Herghelegiu", pren : "Nicu", not : 7},
+        {nume : "Vasile", pren : "Furtuna", not : 7},
+        {nume : "Irina", pren : "Grigore", not : 8},
+        {nume : "Moraru", pren : "Vadim", not : 10}];});
+</script>
+</body>
+</html>
+   
+
+2.	Ridică la pătrat valoarea X dată din input
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="">
+<div  ng-init="x=10">
+<p>Numarul: <input type="number" ng-model="x"></p>
+<hr/>
+<p>Puterea lui {{x}}={{x*x}}</p>
+</div>
+</body>
+</html>
+ 
+3.	De creat un obiect select din lista studenților. De afișat alegerea utilizatorului
+
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+<p><h2>Lista Studentilor <select ng-model="selecstud" ng-options="y.nume for (x, y) in students"></select></h2></p>
+
+
+
+<h3>Numele Prenumele: {{selecstud.nume}}</h3>
+<h3>Facultatea: {{selecstud.fac}}</h3>
+<h3>Specialitatea: {{selecstud.spec}}</h3>
+<h3>Anul: {{selecstud.an}}</h3>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.students = {
+        stud01 : {nume : "Herghelegiu Nicu", fac : "FMI", spec : "IA", an : "3"},
+        stud02 : {nume : "Vasile Furtuna", fac : "FCTC", spec : "MNA", an : "4"},
+        stud03 : {nume : "Irina Grigore", fac : "FBD", spec : "CRD", an : "2"},
+        stud04 : {nume : "Moraru Vadim", fac : "FFI", spec : "NNYT", an : "2"},
+        stud05 : {nume : "Cert Iulia", fac : "FJSC", spec : "LA", an : "1"},
+        stud06 : {nume : "Ana Li", fac : "FPSESAS", spec : "CHEC", an : "3"}
+    }
+});
+</script>
+</body>
+</html>
+
+
+
+4.	De dat a și b din input. După click afișați produsul lor
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="">
+<div  ng-init="x=1;y=2;z">
+<p>Numarul: <input type="number" ng-model="x"></p>
+<p>Numarul: <input type="number" ng-model="y"></p>
+<hr/>
+<p><button ng-click="z = x + y">Suma=</button>    {{z}}</p>
+</div>
+</body>
+</html>
+
+
+5.	De dat a și b din input. Determinați dacă a se împarte la b fără rest
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="">
+<div ng-init="a=4;b=2">
+a: <input type="number" ng-model="a"/> <br/><br/>
+b: <input type="number" ng-model="b"/><br/><br/>
+<div ng-if="a%b==0"><p> Fara rest<p/> </div>
+<div ng-if="a%b!=0"><p> Cu rest - {{a % b}}<p/> </div>
+</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+6-7.	De afișat lista studenților în formă de tabel, aranjați descrescător lista studenților după nota
+<!DOCTYPE html>
+<html>
+<style>
+table, th , td  {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 10px;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<body ng-app="myApp" ng-controller="myCtrl">
+<table>
+  <tr ng-repeat="x in student">
+    <td>{{ x.nume }}</td>
+    <td>{{ x.pren }}</td>
+    <td>{{ x.nota}}</td>
+  </tr>
+</table>
+<hr/>
+<table>
+  <tr ng-repeat="x in student | orderBy : '-nota'">
+    <td>{{ x.nume }}</td>
+    <td>{{ x.pren }}</td>
+    <td>{{ x.nota}}</td>
+  </tr>
+</table>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.student = [
+        {nume : "Herghelegiu", pren : "Nicu", nota : 7},
+        {nume : "Vasile", pren : "Furtuna", nota : 7},
+        {nume : "Irina", pren : "Grigore", nota : 8},
+        {nume : "Moraru", pren : "Vadim", nota : 10} ];});
+</script>
+</body>
+</html>
+
+
+ 
