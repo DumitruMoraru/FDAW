@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="formCtrl">
+ <hr/>
+ <form>
+<p>Introduceti numele dumneavoastra:</p>
+  <p>Nume : <input type="text" ng-model="num"></p>
+  <p>Prenume : <input type="text" ng-model="pren"></p>
+  <hr/>
+<p>Selectati sexul:</p>
+  <p><input type="radio" ng-model="gen" value="Masculin">Barbat</p>
+  <p><input type="radio" ng-model="gen" value="Feminin">Femeie</label></p>
+  <hr/>
+<p>Gradul studiilor:
+<select ng-model="studs">
+    <option value="f">.........
+    <option value="Medii">Medii
+    <option value="Medii Speciale">Medii Speciale
+    <option value="Superioare">Superioare
+    <option value="Doctor ">Doctor Habilitat
+</select></p>
+<hr/>
+    <button type="reset" ng-click="sterge()">Sterge</button>
+    <button  type="submit" ng-click="trimite()">Trimite</button>
+    </form>
+<hr/>
+<div ng-show="hide"> 
+<p>Datele si Salariul respectiv studiilor - </p>
+<p>Numele: {{num}}</p>
+<p>Prenumele: {{pren}}</p>
+<p>Sexul: {{gen}}</p>
+<p>Studiile: {{studs}}</p>
+    <p ng-if="studs==='Medii' || studs==='Medii Speciale'" > Salariul cuvenit este 5000 </p>
+     <p ng-if="studs==='Superioare'" > Salariul cuvenit este 10000 </p>
+      <p ng-if="studs==='Doctor'" > Salariul cuvenit este 15000 </p>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+	$scope.gide=false;
+    $scope.sterge = function() {
+        $scope.nume = $scope.prenume='';
+    };
+    $scope.trimite=function(studs){
+    $scope.hide=!$scope.hide;
+   };
+});
+</script>
+</body>
+</html>
