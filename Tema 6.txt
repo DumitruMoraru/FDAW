@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="formCtrl">
+ <hr/>
+ <form>
+<p>Introduceti numele dumneavoastra:</p>
+  <p>Nume : <input type="text" ng-model="us.num"></p>
+  <p>Prenume : <input type="text" ng-model="us.pren"></p>
+  <p>Data Nasterii : <input type="date" ng-model="data"></p>
+  <hr/>
+<p>Facultatea:</p>
+  <p><input type="radio" ng-model="fac" value="Chimie">Chimie</p>
+  <p><input type="radio" ng-model="fac" value="Informatica">Informatica</p>
+   <p><input type="radio" ng-model="fac" value="Matematica">Matematica</p>
+   <p><input type="radio" ng-model="fac" value="Biologie">Biologie</p>
+
+   <hr/>
+   <div ng-if="fac==='Chimie'">
+          <p>Specialitatea:<select ng-model="studs">
+    <option value="CHI">CHI
+    <option value="CBD">CBD
+    <option value="SRM">SRM
+</select></p>
+         </div>
+           <div ng-if="fac==='Informatica'">
+         <p>Specialitatea: <select ng-model="studs">
+    <option value="MNI">MNI
+    <option value="IA">IA
+    <option value="MA-MIA">MA-MIA 
+</select></p>
+         </div>
+           <div ng-if="fac==='Matematica'">
+         <p>Specialitatea: <select ng-model="studs">
+    <option value="CDA">CDA
+    <option value="PPB">PPB
+    <option value="ASAP">ASAP
+</select></p>
+         </div>
+
+         
+           <div ng-if="fac==='Biologie'">
+         <p>Specialitatea: <select ng-model="studs">
+    <option value="IMI">IMI
+    <option value="ABUDABI">ABUDABI
+    <option value="GAR">GAR
+</select></p>
+         </div>
+           <hr/>
+   Salariu asteptat : <input ng-model="salariu" type="number" ng-change="verification()">
+  <span ng-show="exagerat"> Exagerat! </span> <span ng-show="subestim">Va subestimati!</span>
+  <br/><br/>
+   <button type="reset " ng-click="reset()">Sterge</button>
+ 
+  <button  type="submit " ng-disabled="salariudone" ng-click="done()">Trimite</button>
+</form>
+<div ng-model="afis" ng-show="showMe">
+<h3>Datele dumneavoastra sunt: </h3>
+<p> Numele : {{us.num}}</p>
+<p> Prenumele : {{us.pren}}</p>
+<p> Data nasterii : {{data  | date : "fullDate"}}</p>
+<p> Facultatea : {{fac}}<p>
+<p> Salariu : {{salariu}}</p>
+</div>
+         <script>
+         var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+    $scope.reset=function(){
+    $scope.showMe=false;
+    $scope.us=$scope.data=$scope.salariu=$scope.fac="";};
+    
+	$scope.showMe=false;
+    
+    $scope.done=function(){
+    $scope.showMe=!$scope.showMe;};
+    
+       $scope.verification = function(){
+		if($scope.salariu > 5000){
+						$scope.salariudone = true;
+						$scope.exagerat = true;
+						$scope.subestim = false;}
+                        
+                        
+if($scope.salariu < 3000) { $scope.subestim = true; $scope.salariudone = true; $scope.exagerat = false;}
+if( $scope.salariu <= 5000 && $scope.salariu >= 3000 ) {$scope.salariudone = false; $scope.exagerat = false; $scope.subestim = false;}};
+        
+});
+</script>
+</body>
+</html>
