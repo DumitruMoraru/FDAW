@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+body {
+background-color: #FFDEAD;
+}
+
+input.ng-invalid {
+    background-color:pink;
+}
+input.ng-valid {
+    background-color:lightgreen;
+}
+
+/* MENU */
+ul.topmenu {list-style-type: none;
+           margin: 0;
+           padding: 0;
+           overflow: hidden;
+           background-color: #333;}
+
+ul.topmenu li {float: left;}
+
+ul.topmenu li.right {float: right;}
+
+ul.topmenu li a {display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;}
+
+ul.topmenu li a:hover:not(.active) {background-color: #111;}
+
+ul.topmenu li a.active {background-color: #D2691E;}
+
+
+@media screen and (max-width: 600px) {ul.topmenu li.right, ul.topmenu li {float: none;}}
+
+/* Sfârșit de MENU */
+
+</style>
+<body>
+<div ng-app="myApp" ng-controller="proiect">
+
+<!-- Autentification Section -->
+
+<div ng-show="Autentification">
+
+<!-- Menu -->
+<ul class="topmenu">
+  <li><a class="active" href="" ng-click="aut()">Autentification</a></li>
+  <li  class="right"><a ng-href="" ng-click="reg()">Registration</a></li>
+    <li  class="right"><a ng-href="" ng-click="despre()">About Us</a></li>
+</ul>
+<!-- /MENU -->
+<h1><a id="aut"></a><p style="text-align: center;">Theater "Mihai Eminescu"</p></h1><br/><br/>
+
+<form>
+<h1><p style=" margin-left: 3%;">Autentification:</p></h1><br/>
+
+<!-- Login Input -->
+
+<div class="col-md-8">
+<label>Login:</label> 
+<input type="text" class="form-control" ng-change="verification()" ng-model="log" style="width: 100%; padding: 12px 20px; margin: 8px 0;box-sizing: border-box;" required>
+</div>
+
+<!-- Password Input -->
+
+<div class="col-md-8">
+<label>Password:</label> 
+<input type="password" class="form-control" ng-change="verification()" ng-model="pas" style="width: 100%; padding: 12px 20px; margin: 8px 0;box-sizing: border-box;" required>
+</div>
+
+<br/><br/>
+
+<!-- Button Send Data -->
+
+<button  type="submit" ng-disabled="salariudone" ng-click="trimite()" style=" margin:auto; display:block; width : 30%;" class="btn btn-default">Send</button>
+
+<br/>
+  
+<!-- Button Reset Data -->
+  
+<button type="reset" ng-click="sterge()" style=" margin:auto; display:block; width : 30%;" class="btn btn-default">Reset</button>
+
+</form>
+</div>
+
+<!-- Registration Section -->
+
+<div ng-show="Regi">
+
+<!-- Menu -->
+<ul class="topmenu">
+  <li><a href="" ng-click="aut()">Autentification</a></li>
+  <li  class="right"><a class="active" ng-href="" ng-click="reg()">Registration</a></li>
+    <li  class="right"><a ng-href="" ng-click="despre()">About Us</a></li>
+</ul>
+<!-- /MENU -->
+
+<h1><p style="text-align: center;">Theater "Mihai Eminescu"</p></h1><br/><br/>
+
+<h1><p style=" margin-left: 3%;">Registration:</p></h1><br/>
+
+<!-- Login Input -->
+<form name="myRegin"> 
+<div class="col-md-8">
+<label>Login:</label> 
+<input type="text" name="myReg" ng-change="verReg()" class="form-control" ng-model="reglog" style="width: 100%; padding: 12px 20px; margin: 8px 0;box-sizing: border-box;" required>
+</div>
+
+<!-- Password Input -->
+
+<div class="col-md-8">
+<label>Password:</label> 
+<input type="password" name="myReg" ng-change="verReg()" class="form-control" ng-model="regpas" style="width: 100%; padding: 12px 20px; margin: 8px 0;box-sizing: border-box;" required>
+</div>
+
+<br/><br/>
+
+<!-- Button Send Data -->
+
+<button style=" margin:auto;
+  display:block; width : 30%;" class="btn btn-default" ng-disabled="regin" ng-click="addUser(reglog, regpas)" >Register</button>
+
+<br/>
+  
+<!-- Button Reset Data -->
+  
+<button type="reset" ng-click="sterge()" style=" margin:auto; display:block; width : 30%;" class="btn btn-default">Reset</button>
+
+</form>
+</div>
+
+<!-- About Us Section from Autentification -->
+
+<div  ng-show="About">
+
+<!-- Menu -->
+<ul class="topmenu">
+    <li><a ng-href="" ng-click="aut()">Autentification</a></li>
+    <li class="right"><a ng-href="" ng-click="reg()">Registration</a></li>
+    <li class="right"><a class="active" ng-href="" ng-click="despre()">About Us</a></li>
+</ul>
+<!-- /MENU -->
+
+<h1><p style="text-align: center;">Theater "Mihai Eminescu"</p></h1><br/><br/>
+<h4><p style=" margin-left: 2%; margin-right: 2%; text-indent: 50px;">Teatrul Național „Mihai Eminescu" din Chișinău își începe istoria pe 10 octombrie 1920, atunci când primul teatru stabil de expresie română în Basarabia a fost înființat din inițiativa unui grup de fruntași ai vieții publice locale de epocă în frunte cu Sergiu T. Niță, ministru al Basarabiei în guvernul României, Ștefan Ciobanu, membru al academiei Române, scriitorii: Nicolae N. Beldiceanu, Nicolae Beldiman, Leon Donici și regizorul Gheorghe Mitu Dumitriu.
+
+Denumirea legată de numele lui Mihai Eminescu îi este oferită din anul 1988, iar din iulie 1994, în urma unui concurs de creație, este oficializat ca Teatru Național.
+
+În anul 1994 teatrul devine Național „M.Eminescu", titlul care onorează, dar și obligă. O nouă perioadă a debutat cînd trupa teatrului a fost revigorată cu forțe actoricești tinere, foști absolvenți ale prestigioaselor școli de teatru din Moscova, Tbilisi, Iași, Chișinău.
+</p> <p style="text-align: center;"><a target="_blank" href="https://ro.wikipedia.org/wiki/Teatrul_Na%C8%9Bional_%E2%80%9EMihai_Eminescu%E2%80%9D_din_Chi%C8%99in%C4%83u">"Wikipedia - Teatrul Național „Mihai Eminescu” din Chișinău"</a></p></h4><br/><br/>
+
+<h1><p style="text-align: center;">Moraru Dumitru, IA1801</p></h1>
+<h1><p style="text-align: center;">FDAW 2020</p></h1>
+<h1><p style="text-align: center;">Teatrul "Mihai Eminescu"</p></h1>
+
+
+
+<br/><br/>
+
+
+
+</div>
+
+<!-- About Us Section From User-->
+
+<div  ng-show="ussss">
+
+<!-- Menu -->
+<ul class="topmenu">
+    <li><a ng-href="" ng-click="useer()">Theater</a></li>
+    <li class="right"><a class="active" ng-href="" ng-click="usssssss()">About Us</a></li>
+</ul>
+<!-- /MENU -->
+
+<h1><p style="text-align: center;">Theater "Mihai Eminescu"</p></h1><br/><br/>
+<h4><p style=" margin-left: 2%; margin-right: 2%; text-indent: 50px;">Teatrul Național „Mihai Eminescu" din Chișinău își începe istoria pe 10 octombrie 1920, atunci când primul teatru stabil de expresie română în Basarabia a fost înființat din inițiativa unui grup de fruntași ai vieții publice locale de epocă în frunte cu Sergiu T. Niță, ministru al Basarabiei în guvernul României, Ștefan Ciobanu, membru al academiei Române, scriitorii: Nicolae N. Beldiceanu, Nicolae Beldiman, Leon Donici și regizorul Gheorghe Mitu Dumitriu.
+
+Denumirea legată de numele lui Mihai Eminescu îi este oferită din anul 1988, iar din iulie 1994, în urma unui concurs de creație, este oficializat ca Teatru Național.
+
+În anul 1994 teatrul devine Național „M.Eminescu", titlul care onorează, dar și obligă. O nouă perioadă a debutat cînd trupa teatrului a fost revigorată cu forțe actoricești tinere, foști absolvenți ale prestigioaselor școli de teatru din Moscova, Tbilisi, Iași, Chișinău.
+</p> <p style="text-align: center;"><a target="_blank" href="https://ro.wikipedia.org/wiki/Teatrul_Na%C8%9Bional_%E2%80%9EMihai_Eminescu%E2%80%9D_din_Chi%C8%99in%C4%83u">"Wikipedia - Teatrul Național „Mihai Eminescu” din Chișinău"</a></p></h4><br/><br/>
+
+<h1><p style="text-align: center;">Moraru Dumitru, IA1801</p></h1>
+<h1><p style="text-align: center;">FDAW 2020</p></h1>
+<h1><p style="text-align: center;">Teatrul "Mihai Eminescu"</p></h1>
+
+
+
+<br/><br/>
+</div>
+
+<!-- User Section -->
+
+<div  ng-show="User">
+
+<!-- Menu -->
+<ul class="topmenu">
+    <li><a ng-href=""  class="active" ng-click="useer()">Theater</a></li>
+    <li  class="right"><a ng-href="" ng-click="usssssss()">About Us</a></li>
+</ul>
+<!-- /MENU -->
+
+<h1><p style="text-align: center;">Theater "Mihai Eminescu"</p></h1><br/><br/>
+<h1><p style=" margin-left: 3%;">Welcome,</p></h1>
+
+<br/><br/>
+
+<!-- Filter to show first 3 element from the list -->
+
+<h1><p style="margin:3%; font-style: italic;">TOP 3 OF THE WEEK</p></h1>
+<ol> <li style="font-size: large; font-style: italic;" ng-repeat="item in list.items | limitTo : 3">{{item.purchase}}</li></ol>
+
+<br/>
+
+
+<h1><p style="text-align:center;">Search the show you're interested in.</p></h1>
+
+<!-- Input for searching in the list -->
+
+<div class="form-group">
+<div class="col-md-12">
+<input type='text' class="form-control" ng-model='searchText' placeholder="Search..."/>
+</div></div>
+            <br/><br/>
+<!-- List for searching -->            
+            
+<ul><li style="font-weight: 900;" ng-repeat='item in list.items | filter:searchText'> {{item.purchase}}   -   {{item.price | currency}}</li></ul>
+<h1><p style="text-align:center;">Here is the list where you can buy tickets -</p></h1>
+
+<!-- Names of the columns -->            
+
+<table class="table table-striped"><thead>
+<tr><th style="padding-left:10%;">Name</th>
+    <th style="padding-right:20%;">Price</th>
+    <th style="padding-left:5%;">Check</th></tr></thead><tbody>
+    
+<!-- Data from the columns -->            
+
+<tr ng-repeat="x in list.items | orderBy:'price'">
+<td style="padding-left:10%;">{{x.purchase}}</td>
+<td style="padding-right:20%;">{{x.price | currency}}</td>
+<td style="padding-left:7%;"><input type="checkbox" ng-model="x.done" /></td>
+</tr>
+               
+<!-- Row that show the total sum of the selected shows -->            
+           
+<tr><td style="text-align: center;vertical-align: middle;">Total:</td>
+<td colspan="2" style="text-align: center;vertical-align: middle;">{{ sumaTotala }}</td></tr></tbody></table>
+                        
+<div class="form-group">
+<div class="col-md-offset-2 col-md-8">
+
+<!-- Button that show the total sum of the selected shows -->            
+
+<button class="btn btn-default" style=" margin:auto; display:block; width : 30%;" ng-click="total()">Total</button><br/>
+
+<!-- Button that delete stuff from list when is clicked -->            
+
+<button class="btn btn-default" style=" margin:auto;display:block; width : 30%;" ng-click="del()">Buy</button><br/>
+
+<!-- Button that uncheck all the checkbox inputs -->            
+
+<button class="btn btn-default" style=" margin:auto;display:block; width : 30%;" ng-click="deluser()">Uncheck All</button><br/>
+
+<!-- Button for logout -->            
+
+<button class="btn btn-default" style=" margin:auto;display:block; width : 30%;" ng-click="logoutA()">Logout</button></div></div></div> 
+
+<!-- Admin Section -->            
+
+<div  ng-show="Admin">
+
+<h1><p style="text-align: center;">Theater "Mihai Eminescu"</p></h1><br/><br/>
+
+<h1><p style=" margin-left: 3%;">Admin Page</p></h1>
+
+<!-- Form for adding Shows -->            
+
+<form name="myForm">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input class="form-control" name="myName" ng-change="ver()" ng-model="text" placeholder = "Add a show" required/>
+                </div>
+                
+                <br/><br/>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="number" name="myName" ng-change="ver()" class="form-control" ng-model="price" placeholder="Price of the show" required/>
+                </div><br/><br/>
+            </div><br/>
+                    <button style=" margin:auto;
+  display:block; width : 30%;" class="btn btn-default" ng-disabled="addbyadmin" ng-click="addItem(text, price)" >Add</button><form name="myForm">
+<hr/>
+          
+<!-- Table for showing the existent shows -->            
+          
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in list.items | orderBy:'price'">
+                    <td>{{item.purchase}}</td>
+                    <td>{{item.price | currency}}</td>
+                    <td><input type="checkbox" ng-model="item.done" /></td>
+                </tr>
+            </tbody>
+        </table><hr/>
+        
+        
+          <div class="form-group">
+                <div class="col-md-offset-2 col-md-8">
+                    <button class="btn btn-default" style=" margin:auto;
+  display:block; width : 30%;" ng-click="del()">Delete Checked</button><br/>
+  <button class="btn btn-default" style=" margin:auto;
+  display:block; width : 30%;" ng-click="logoutA()">Logout</button>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('proiect', function($scope) {
+    
+    $scope.sterge = function() {
+    $scope.log = $scope.pas='';};
+    
+    $scope.salariudone = true;
+    $scope.addbyadmin = true;
+    $scope.regin = true;
+
+    
+        $scope.verReg=function(){
+             if(myRegin.myReg.$valid=true){
+         $scope.regin = false;}
+    }
+    
+    
+    $scope.ver=function(){
+             if(myForm.myName.$valid=true){
+         $scope.addbyadmin = false;}
+    }
+    
+    $scope.verification=function(){
+    if($scope.log==='User' &&  $scope.pas==='VIP'){
+    $scope.salariudone = false;}
+    else if($scope.log==='Admin' &&  $scope.pas==='PIV')
+    {$scope.salariudone = false;}
+	else {
+    var old=$scope.listus.data;
+      angular.forEach(old, function(item) {
+      if($scope.log===item.logre && $scope.pas===item.pasre)
+      {$scope.salariudone = false;}
+    })}};
+    
+    $scope.Autentification=true;
+    $scope.User=false;
+    $scope.Admin=false;
+    $scope.About=false;
+    $scope.Regi=false;
+    $scope.ussss=false;
+    
+    $scope.trimite=function(){
+    if($scope.log==='User' &&  $scope.pas==='VIP')
+    {$scope.User=true;
+     $scope.Autentification=false;}
+    else if($scope.log==='Admin' &&  $scope.pas==='PIV')
+    {$scope.Admin=true;
+     $scope.Autentification=false;}
+    else {
+    var old=$scope.listus.data;
+      angular.forEach(old, function(item) {
+      if($scope.log===item.logre && $scope.pas===item.pasre)
+      {$scope.Autentification = false;
+       $scope.User = true;}
+    })}};
+
+   
+   $scope.despre=function(){
+      $scope.Autentification=false;
+      $scope.User=false;
+      $scope.Admin=false;
+      $scope.About=true;
+      $scope.Regi=false;
+      $scope.log = $scope.pas='';}
+      
+   $scope.usssssss=function(){
+      $scope.Autentification=false;
+      $scope.User=false;
+      $scope.Admin=false;
+      $scope.ussss=true;
+      $scope.Regi=false;}
+    
+   $scope.aut=function(){
+      $scope.Autentification=true;
+      $scope.User=false;
+      $scope.Admin=false;
+      $scope.About=false;
+      $scope.Regi=false;
+      $scope.log = $scope.pas='';}
+      
+   $scope.useer=function(){
+      $scope.Autentification=false;
+      $scope.User=true;
+      $scope.Admin=false;
+      $scope.ussss=false;
+      $scope.Regi=false;}
+    
+   $scope.reg=function(){
+      $scope.Autentification=false;
+      $scope.User=false;
+      $scope.Admin=false;
+      $scope.About=false;
+      $scope.Regi=true;
+      $scope.reglog = $scope.regpas=''; }
+   
+   var model = {
+    items: [
+        { purchase: "Jerusalem", done: false, price: 150 },
+        { purchase: "Hamilton", done: false, price: 90 },
+        { purchase: "The Children", done: false, price: 100 },
+        { purchase: "The Flick", done: false, price: 65 },
+        { purchase: "The Phantom of the Opera", done: false, price: 65 },
+        { purchase: "The Book of Mormon", done: false, price: 200 },
+        { purchase: "Les Miserables", done: false, price: 130 },
+        { purchase: "West Side Story", done: false, price: 455 },
+        { purchase: "Wicked", done: false, price: 90 },
+        { purchase: "Kinky Boots", done: false, price: 100 },
+        { purchase: "The Producers", done: false, price: 150 },
+        { purchase: "Fiddler on the Roof", done: false, price: 130 },
+        { purchase: "Chicago", done: false, price: 500 },
+        { purchase: "Krum", done: false, price: 100 },
+        { purchase: "Watch Dogs", done: false, price: 40 }]};
+
+   $scope.list = model;
+   
+   $scope.addItem = function (text, price) {
+           price = parseFloat(price);
+        if(text != "" && !isNaN(price))
+        {$scope.list.items.push({ purchase: text, price: price, done: false });}
+		}
+
+       $scope.del = function() {
+        var oldList = $scope.list.items;
+        $scope.list.items = [];
+        angular.forEach(oldList, function(item) {
+            if (!item.done) $scope.list.items.push(item);});};
+    
+    $scope.logoutA = function(){
+      $scope.Admin=false;
+      $scope.User=false;
+      $scope.Autentification=true;
+      $scope.log = $scope.pas='';
+      $scope.salariudone = true; }
+    
+     $scope.sumaTotala = 0;
+       $scope.deluser=function(){
+       $scope.list.items.forEach(function(x){
+   			x.done=false;})}
+    
+	
+   var users = {
+    data: [
+        { logre: "bodrug", pasre: "sveta" },
+        { logre: "moraru", pasre: "dumitru" }]};
+
+   $scope.listus = users;
+   
+   $scope.addUser = function (reglog, regpas) {
+        if(reglog != "" && regpas != "")
+        {$scope.listus.data.push({ logre: reglog, pasre: regpas});}
+      $scope.About=false;
+      $scope.Regi=false;
+      $scope.Autentification=true;
+        }
+
+     $scope.total = function(){
+        $scope.sumTotala=0;
+        $scope.list.items.forEach(function(x){
+            if(x.done==true) $scope.sumaTotala += x.price;})}});
+            
+            
+</script>
+</body>
+</html>
